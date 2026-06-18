@@ -1,0 +1,521 @@
+/* ============================================================
+   AMEN PICTURES — SERVICES PAGE STYLES
+   css/pages/services.css: Photography, videography and
+   event service sections, graphic design promo, and
+   6-step process timeline.
+   ============================================================ */
+
+/* ─────────────────────────────────────────
+   1. SERVICE SECTION LAYOUT (alternating)
+───────────────────────────────────────── */
+.service-section {
+  position: relative;
+}
+
+/* Split layout: content left, visual right */
+.service-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-10), 6vw, var(--space-16));
+  align-items: center;
+}
+
+/* Reversed: visual left, content right */
+.service-layout.reverse {
+  direction: rtl;
+}
+
+.service-layout.reverse > * {
+  direction: ltr;
+}
+
+/* ─────────────────────────────────────────
+   2. SERVICE CONTENT BLOCK
+───────────────────────────────────────── */
+.service-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.service-content .section-tag {
+  align-self: flex-start;
+}
+
+.service-content h2 {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  line-height: var(--leading-snug);
+}
+
+.service-section:not(.dark-section) .service-content h2 {
+  color: var(--color-black);
+}
+
+.service-content > p {
+  font-size: var(--text-base);
+  line-height: var(--leading-loose);
+  max-width: none;
+}
+
+/* Individual service items list */
+.service-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-block: var(--space-2);
+}
+
+.service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.service-section:not(.dark-section) .service-item:hover {
+  background: var(--color-light-bg);
+  border-color: var(--color-light-border);
+}
+
+.dark-section .service-item:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: var(--color-dark-border);
+}
+
+.service-item .fas {
+  width: 36px;
+  height: 36px;
+  background: var(--color-gold-muted);
+  color: var(--color-gold);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.service-item:hover .fas {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+.service-item h4 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-1);
+}
+
+.service-section:not(.dark-section) .service-item h4 {
+  color: var(--color-black);
+}
+
+.dark-section .service-item h4 {
+  color: var(--color-white);
+}
+
+.service-item p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  max-width: none;
+}
+
+/* YouTube reel box */
+.video-reel-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-dark-border);
+  border-radius: var(--radius-lg);
+  flex-wrap: wrap;
+}
+
+.video-reel-label {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.6);
+  max-width: none;
+  margin: 0;
+}
+
+
+/* ─────────────────────────────────────────
+   3. SERVICE GALLERY (photo grid)
+───────────────────────────────────────── */
+.service-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.service-gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity var(--transition-base);
+  opacity: 0.9;
+}
+
+.service-gallery-grid img:hover {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+.service-gallery-grid img:first-child {
+  border-radius: var(--radius-xl) 0 0 0;
+}
+.service-gallery-grid img:nth-child(2) {
+  border-radius: 0 var(--radius-xl) 0 0;
+}
+.service-gallery-grid img:nth-child(3) {
+  border-radius: 0 0 0 var(--radius-xl);
+}
+.service-gallery-grid img:last-child {
+  border-radius: 0 0 var(--radius-xl) 0;
+}
+
+
+/* ─────────────────────────────────────────
+   4. VIDEO PLACEHOLDER (videography panel)
+───────────────────────────────────────── */
+.service-video-embed {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.video-placeholder {
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, var(--color-dark-card) 0%, #1c1a12 100%);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.video-placeholder:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.video-placeholder .fas {
+  font-size: 4rem;
+  color: var(--color-gold);
+  opacity: 0.7;
+  transition: opacity var(--transition-base), transform var(--transition-spring);
+}
+
+.video-placeholder:hover .fas {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.video-placeholder p {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  max-width: none;
+}
+
+
+/* ─────────────────────────────────────────
+   5. EVENTS GRID
+───────────────────────────────────────── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.event-card {
+  background: var(--color-light-bg);
+  border: 1px solid var(--color-light-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-spring);
+}
+
+.event-card:hover {
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.event-card .fas {
+  font-size: 1.5rem;
+  color: var(--color-gold);
+  width: 44px;
+  height: 44px;
+  background: var(--color-gold-muted);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.event-card:hover .fas {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+.event-card h3 {
+  font-size: var(--text-lg);
+  color: var(--color-black);
+  font-weight: var(--weight-semibold);
+}
+
+.event-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .events-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ─────────────────────────────────────────
+   6. GRAPHIC DESIGN PROMO BOX
+───────────────────────────────────────── */
+.design-promo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-10);
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  background: linear-gradient(135deg,
+    rgba(201,168,76,0.06) 0%,
+    rgba(255,255,255,0.02) 100%
+  );
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius-xl);
+}
+
+.design-promo-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.design-promo-content .section-tag {
+  align-self: flex-start;
+}
+
+.design-promo-content h2 {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl));
+  color: var(--color-white);
+}
+
+.design-promo-content p {
+  font-size: var(--text-base);
+  color: var(--color-text-on-dark-muted);
+  max-width: 55ch;
+  line-height: var(--leading-loose);
+}
+
+.design-services-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2) var(--space-4);
+}
+
+.design-services-list span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.75);
+}
+
+.design-services-list span .fas {
+  color: var(--color-gold);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+.design-promo-icon {
+  font-size: 7rem;
+  color: rgba(201,168,76,0.08);
+  line-height: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  transition: color var(--transition-slow);
+}
+
+.design-promo:hover .design-promo-icon {
+  color: rgba(201,168,76,0.15);
+}
+
+@media (max-width: 768px) {
+  .design-promo { flex-direction: column; }
+  .design-promo-icon { display: none; }
+  .design-services-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .design-services-list { grid-template-columns: 1fr; }
+}
+
+
+/* ─────────────────────────────────────────
+   7. PROCESS TIMELINE
+───────────────────────────────────────── */
+.process-section {
+  background: var(--color-white);
+}
+
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 760px;
+  margin-inline: auto;
+  position: relative;
+}
+
+/* Vertical connecting line */
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  left: 42px;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-gold-dark) 8%,
+    var(--color-gold) 50%,
+    var(--color-gold-dark) 92%,
+    transparent
+  );
+  z-index: 0;
+}
+
+.process-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+/* Step number circle */
+.step-number {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  background: var(--color-white);
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-gold);
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-spring);
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.process-step:hover .step-number {
+  background: var(--color-gold);
+  color: var(--color-black);
+  transform: scale(1.08);
+}
+
+.step-content {
+  padding-top: var(--space-2);
+  flex: 1;
+}
+
+.step-content h3 {
+  font-size: var(--text-xl);
+  color: var(--color-black);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+  transition: color var(--transition-fast);
+}
+
+.process-step:hover .step-content h3 {
+  color: var(--color-gold-dark);
+}
+
+.step-content p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+  max-width: 55ch;
+}
+
+@media (max-width: 560px) {
+  .process-timeline::before { left: 24px; }
+  .step-number { width: 40px; height: 40px; font-size: var(--text-xs); }
+  .process-step { gap: var(--space-4); }
+}
+
+
+/* ─────────────────────────────────────────
+   8. RESPONSIVE OVERRIDES
+───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .service-layout,
+  .service-layout.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .service-layout.reverse > * { direction: ltr; }
+
+  .service-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: var(--radius-lg);
+  }
+
+  .service-gallery-grid img {
+    aspect-ratio: 1;
+    border-radius: 0 !important;
+  }
+
+  .service-gallery-grid img:first-child { border-radius: var(--radius-lg) 0 0 var(--radius-lg) !important; }
+  .service-gallery-grid img:last-child  { border-radius: 0 var(--radius-lg) var(--radius-lg) 0 !important; }
+}

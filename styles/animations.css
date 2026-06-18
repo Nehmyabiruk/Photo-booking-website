@@ -1,0 +1,380 @@
+/* ============================================================
+   AMEN PICTURES — ANIMATIONS
+   animations.css: Keyframes, scroll-reveal classes,
+   entrance animations, and micro-interaction utilities.
+   ============================================================ */
+
+/* ─────────────────────────────────────────
+   1. KEYFRAME DEFINITIONS
+───────────────────────────────────────── */
+
+/* Fade up — primary entrance animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in — simple opacity only */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fade down — for dropdowns, overlays */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in — for modals, cards */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Count up — for stats numbers (JS triggers class) */
+@keyframes countPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* Gold shimmer — decorative sweep effect */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Pulse glow — for WhatsApp button, CTAs */
+@keyframes pulseGlow {
+  0%   { box-shadow: 0 4px 20px rgba(201,168,76,0.3); }
+  50%  { box-shadow: 0 4px 32px rgba(201,168,76,0.6); }
+  100% { box-shadow: 0 4px 20px rgba(201,168,76,0.3); }
+}
+
+/* Bounce — for scroll hint arrow */
+@keyframes bounceY {
+  0%, 100% { transform: translateY(0) translateX(-50%); }
+  50%       { transform: translateY(8px) translateX(-50%); }
+}
+
+/* Spin — for loading states */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Gradient pan — hero overlay */
+@keyframes gradientPan {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Filter item hide */
+@keyframes filterHide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+    pointer-events: none;
+  }
+}
+
+/* Filter item show */
+@keyframes filterShow {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   2. SCROLL REVEAL CLASSES
+   JS (animations.js) adds .revealed when
+   element enters viewport via IntersectionObserver
+───────────────────────────────────────── */
+
+/* Base reveal state — invisible until revealed */
+.reveal-up,
+.reveal-left,
+.reveal-right,
+.reveal-fade {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up    { transform: translateY(40px); }
+.reveal-left  { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-fade  { transform: none; }
+
+/* Revealed state */
+.reveal-up.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed,
+.reveal-fade.revealed {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Stagger delays — applied via inline style or these classes */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+
+/* ─────────────────────────────────────────
+   3. HERO SCROLL HINT
+───────────────────────────────────────── */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 1.25rem;
+  animation: bounceY 2s ease-in-out infinite;
+  z-index: var(--z-raised);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.hero-scroll-hint:hover {
+  color: var(--color-gold);
+}
+
+
+/* ─────────────────────────────────────────
+   4. GOLD SHIMMER TEXT UTILITY
+───────────────────────────────────────── */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-dark) 0%,
+    var(--color-gold-light) 40%,
+    var(--color-gold) 60%,
+    var(--color-gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+
+/* ─────────────────────────────────────────
+   5. CARD HOVER LIFT UTILITY
+───────────────────────────────────────── */
+.hover-lift {
+  transition:
+    transform var(--transition-spring),
+    box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* ─────────────────────────────────────────
+   6. IMAGE OVERLAY HOVER
+───────────────────────────────────────── */
+.img-hover-zoom {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.img-hover-zoom img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.06);
+}
+
+
+/* ─────────────────────────────────────────
+   7. LOADING SPINNER
+───────────────────────────────────────── */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(201,168,76,0.2);
+  border-top-color: var(--color-gold);
+  border-radius: var(--radius-full);
+  animation: spin 0.7s linear infinite;
+}
+
+.spinner--sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+
+/* ─────────────────────────────────────────
+   8. STATS COUNTER (animated numbers)
+───────────────────────────────────────── */
+.stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  font-weight: var(--weight-bold);
+  color: var(--color-gold);
+  line-height: 1;
+  transition: transform var(--transition-spring);
+}
+
+.stat-number.counting {
+  animation: countPulse 0.3s ease-in-out;
+}
+
+
+/* ─────────────────────────────────────────
+   9. PAGE TRANSITION OVERLAY
+   JS toggles .page-out class on navigation
+───────────────────────────────────────── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--color-black);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.page-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+/* ─────────────────────────────────────────
+   10. GALLERY ITEM FILTER TRANSITION
+───────────────────────────────────────── */
+.gallery-item {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.gallery-item.hidden {
+  opacity: 0;
+  transform: scale(0.93);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.gallery-item.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+  position: relative;
+  visibility: visible;
+}
+
+
+/* ─────────────────────────────────────────
+   11. MODAL OPEN / CLOSE
+───────────────────────────────────────── */
+.modal-enter {
+  animation: scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.modal-exit {
+  animation: scaleIn 0.2s cubic-bezier(0.22, 1, 0.36, 1) reverse forwards;
+}
+
+
+/* ─────────────────────────────────────────
+   12. PULSE ANIMATION (CTA button accent)
+───────────────────────────────────────── */
+.btn-gold-pulse {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+
+/* ─────────────────────────────────────────
+   13. REDUCE MOTION OVERRIDES
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-scroll-hint { animation: none; }
+  .text-shimmer { animation: none; }
+  .btn-gold-pulse { animation: none; }
+  .spinner { animation: spin 1.5s linear infinite; }
+
+  .gallery-item { transition: opacity 0.15s ease; }
+}
