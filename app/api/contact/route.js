@@ -1,63 +1,49 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req) {
+// app/api/contact/route.js
+import { NextResponse } from 'next/server';
+
+export async function POST(request) {
   try {
-    const body = await req.json();
+    const data = await request.json();
 
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      eventType,
-      eventDate,
-      location,
-      budget,
-      message,
-    } = body;
+    // Basic validation
+    if (!data.firstName || !data.email || !data.eventType || !data.message) {
+      return NextResponse.json(
+        { error: "First name, email, event type and message are required" },
+        { status: 400 }
+      );
+    }
 
     const fullMessage = `
-New Booking Request:
+New Booking Request Received!
 
-Name: ${firstName} ${lastName}
-Email: ${email}
-Phone: ${phone}
-Event Type: ${eventType}
-Date: ${eventDate}
-Location: ${location}
-Budget: ${budget}
+Name: ${data.firstName} ${data.lastName || ''}
+Email: ${data.email}
+Phone: ${data.phone || 'Not provided'}
+Event Type: ${data.eventType}
+Date: ${data.eventDate || 'Not specified'}
+Location: ${data.location || 'Not specified'}
+Budget: ${data.budget || 'Not specified'}
 
 Message:
-${message}
-    `;
+${data.message}
+    `.trim();
 
-    // EMAIL (Resend)
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM,
-      to: process.env.ADMIN_EMAIL,
-      replyTo: email,
-      subject: "New Event Booking Request",
-      text: fullMessage,
-    });
+    console.log("📸 New Booking Request:");
+    console.log(fullMessage);
 
-    // WhatsApp link (unchanged)
-    const whatsappMessage = encodeURIComponent(fullMessage);
-
-    const whatsappLink = `https://wa.me/${process.env.ADMIN_PHONE_NUMBER}?text=${whatsappMessage}`;
+    // TODO: Connect real email/WhatsApp later when ready
 
     return NextResponse.json({
       success: true,
-      whatsappLink,
+      message: "Thank you! Your booking request has been received. We will contact you soon.",
     });
-  } catch (error) {
-    console.error(error);
 
-    return NextResponse.json(
-      { success: false, error: "Failed to send message" },
-      { status: 500 }
-    );
+  } catch (error) {
+    console.error('Booking API Error:', error);
+    return NextResponse.json({
+      error: "Something went wrong. Please try again.",
+    }, { status: 500 });
   }
 }
