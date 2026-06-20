@@ -80,9 +80,7 @@ export default function AboutClient() {
           <div className="team-grid">
             {team.map((member, i) => (
               <div className="team-card reveal-up" key={i} style={{ animationDelay: `${0.1 + i * 0.1}s` }}>
-                <div className="team-photo">
-                  <Image src={member.img} alt={`${member.name} at Amen Pictures`} fill style={{ objectFit: 'cover', objectPosition: 'top' }} loading="lazy" />
-                </div>
+             {/* Team photo removed */}
                 <div className="team-info">
                   <h3>{member.name}</h3>
                   <span className="team-role">{member.role}</span>
