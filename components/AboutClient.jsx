@@ -5,9 +5,9 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import '@/styles/pages/about.css';
 
 const team = [
-  { name: 'Amen Tesfaye',  role: 'Lead Photographer & Founder', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80', desc: 'With 10+ years behind the lens, Amen brings artistic vision and cultural depth to every shoot — specializing in weddings and cultural events.' },
-  { name: 'Samuel Girma',  role: 'Lead Videographer',           img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80', desc: "Samuel crafts cinematic wedding films and event highlights with a storyteller's eye and an editor's precision." },
-  { name: 'Hiwot Bekele',  role: 'Senior Photo Editor',         img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80',       desc: 'Hiwot transforms raw captures into polished masterpieces, ensuring every gallery delivered exceeds client expectations.' },
+  { name: 'misikir',  role: 'Lead Photographer & Founder', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80', desc: 'With 10+ years behind the lens, Amen brings artistic vision and cultural depth to every shoot — specializing in weddings and cultural events.' },
+  { name: 'Kaleb',  role: 'Lead Videographer',           img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80', desc: "Samuel crafts cinematic wedding films and event highlights with a storyteller's eye and an editor's precision." },
+  { name: 'krysty',  role: 'Senior Photo Editor',         img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80',       desc: 'Hiwot transforms raw captures into polished masterpieces, ensuring every gallery delivered exceeds client expectations.' },
 ];
 
 const equipment = [
