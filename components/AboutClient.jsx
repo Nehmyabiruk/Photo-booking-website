@@ -80,7 +80,7 @@ export default function AboutClient() {
           <div className="team-grid">
             {team.map((member, i) => (
               <div className="team-card reveal-up" key={i} style={{ animationDelay: `${0.1 + i * 0.1}s` }}>
-             {/* Team photo removed */}
+             {/*  Team photo removed By me */}
                 <div className="team-info">
                   <h3>{member.name}</h3>
                   <span className="team-role">{member.role}</span>
