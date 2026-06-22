@@ -172,13 +172,15 @@ export default function PortfolioClient() {
       )}
 
       {/* Lightbox */}
-      <Lightbox
-        open={lightboxIdx !== null}
-        close={() => setLightboxIdx(null)}
-        index={lightboxIdx ?? 0}
-        slides={slides}
-        plugins={[Zoom]}
-      />
+     {selectedCategory && (
+  <Lightbox
+    open={lightboxIdx !== null}
+    close={() => setLightboxIdx(null)}
+    index={lightboxIdx ?? 0}
+    slides={slides}
+    plugins={[Zoom]}
+  />
+)}
     </>
   );
 }
