@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
 import Image from 'next/image';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import Lightbox from "yet-another-react-lightbox";
@@ -10,156 +9,136 @@ import "yet-another-react-lightbox/styles.css";
 import '@/styles/pages/portfolio.css';
 
 /* ---------------- DATA ---------------- */
-'use client';
-
-import { useState, useCallback } from 'react';
 
 const galleryItems = [
-  { src: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=90', alt: 'Wedding ceremony', cat: 'weddings' },
-  { src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=90', alt: 'Wedding reception', cat: 'weddings' },
-  { src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=90', alt: 'Habesha wedding', cat: 'weddings' },
+  // Weddings
+  { id: 1, src: '/images/logo/AR509567.jpg', alt: 'Wedding ceremony', cat: 'weddings' },
+  { id: 3, src: '/images/logo/AR509277.jpg', alt: 'Wedding ceremony', cat: 'weddings' },
 
-  { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=90', alt: 'Corporate event', cat: 'events' },
-  { src: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1200&q=90', alt: 'Birthday event', cat: 'events' },
+  // Studio Portraits
+  { id: 5, src: '/images/logo/JPEG image-49D5-970A-4F-171.jpeg', alt: 'Studio portrait', cat: 'studio' },
+  { id: 6, src: '/images/logo/JPEG image-49D5-970A-4F-172.jpeg', alt: 'Studio portrait', cat: 'studio' },
+  { id: 7, src: '/images/logo/JPEG image-49D5-970A-4F-173.jpeg', alt: 'Studio portrait', cat: 'studio' },
+  //{ id: 8, src: '/images/logo/599A3463.jpg', alt: 'Studio portrait', cat: 'studio' },
 
-  { src: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=90', alt: 'Portrait shoot', cat: 'portraits' },
-  { src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&q=90', alt: 'Family portrait', cat: 'portraits' },
+  // Graduation
+  { id: 9, src: '/images/logo/JPEG image-49D5-970A-4F-56.jpeg', alt: 'Graduation', cat: 'graduation' },
+  { id: 10, src: '/images/logo/JPEG image-49D5-970A-4F-57.jpeg', alt: 'Graduation', cat: 'graduation' },
+  { id: 11, src: '/images/logo/JPEG image-49D5-970A-4F-59.jpeg', alt: 'Graduation', cat: 'graduation' },
+  //{ id: 12, src: '/images/logo/AR506679.jpg', alt: 'Graduation', cat: 'graduation' },
+  //{ id: 13, src: '/images/logo/AR506318.jpg', alt: 'Graduation', cat: 'graduation' },
 
-  { src: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1200&q=90', alt: 'Corporate branding', cat: 'corporate' },
-  { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=90', alt: 'Ethiopian wedding', cat: 'ethiopia' },
+  // Events
+  { id: 17, src: '/images/logo/JPEG image-49D5-970A-4F-138.jpeg', alt: 'Special event', cat: 'events' },
+  { id: 18, src: '/images/logo/JPEG image-49D5-970A-4F-141.jpeg', alt: 'Special event', cat: 'events' },
 
-  // New categories
-  { src: 'https://images.unsplash.com/photo-1519741497674-611027288377?w=1200&q=90', alt: 'Romantic couple', cat: 'couple' },
-  { src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=90', alt: 'Birthday party', cat: 'birthday' },
-  { src: 'https://images.unsplash.com/photo-1515488042361-0e5b5c6e1b0a?w=1200&q=90', alt: 'Baby shower', cat: 'baby-shower' },
+  // Products
+  { id: 19, src: '/images/logo/599A1705.jpg', alt: 'Product', cat: 'products' },
+  { id: 20, src: '/images/logo/599A1684.jpg', alt: 'Product', cat: 'products' },
+  { id: 21, src: '/images/logo/599A1672.jpg', alt: 'Product', cat: 'products' },
+  { id: 22, src: '/images/logo/599A1603.jpg', alt: 'Product', cat: 'products' },
+  { id: 23, src: '/images/logo/599A1620.jpg', alt: 'Product', cat: 'products' },
+
+  // Portraits
+  { id: 25, src: '/images/logo/AR506234.jpg', alt: 'Portrait', cat: 'portraits' },
+  { id: 26, src: '/images/logo/AR506359.jpg', alt: 'Portrait', cat: 'portraits' },
+  { id: 27, src: '/images/logo/AR508966.jpg', alt: 'Portrait', cat: 'portraits' },
+  { id: 28, src: '/images/logo/IMG_2819.JPG', alt: 'Portrait', cat: 'portraits' },
+
+  // Maternity
+  { id: 29, src: '/images/logo/599A9425.jpg', alt: 'Maternity', cat: 'maternity' },
+  { id: 30, src: '/images/logo/599A9275.jpg', alt: 'Maternity', cat: 'maternity' },
+  { id: 31, src: '/images/logo/599A9103.jpg', alt: 'Maternity', cat: 'maternity' },
+  { id: 32, src: '/images/logo/599A9099.jpg', alt: 'Maternity', cat: 'maternity' },
+
+  // Kids
+  { id: 33, src: '/images/logo/599A4917.jpg', alt: 'Kids', cat: 'kids' },
+  { id: 34, src: '/images/logo/AR507862.jpg', alt: 'Kids', cat: 'kids' },
+  { id: 35, src: '/images/logo/AR509639 (1).jpg', alt: 'Kids', cat: 'kids' },
+  { id: 36, src: '/images/logo/AR507520.jpg', alt: 'Kids', cat: 'kids' },
+
+  // Couple
+  { id: 39, src: '/images/logo/AR505878.jpg', alt: 'Couple', cat: 'couple' },
+  { id: 40, src: '/images/logo/AR505738-Enhanced-NR.jpg', alt: 'Couple', cat: 'couple' },
+  { id: 41, src: '/images/logo/599A8968.jpg', alt: 'Couple', cat: 'couple' },
+  { id: 42, src: '/images/logo/599A8332.jpg', alt: 'Couple', cat: 'couple' },
+  { id: 43, src: '/images/logo/599A6362.jpg', alt: 'Couple', cat: 'couple' },
+
+  // Christening
+  { id: 44, src: '/images/logo/AR500208.jpg', alt: 'Christening', cat: 'christening' },
+  { id: 45, src: '/images/logo/AR500267.jpg', alt: 'Christening', cat: 'christening' },
+  { id: 46, src: '/images/logo/AR508422.jpg', alt: 'Christening', cat: 'christening' },
+  { id: 47, src: '/images/logo/AR508606.jpg', alt: 'Christening', cat: 'christening' },
+  { id: 48, src: '/images/logo/AR508639.jpg', alt: 'Christening', cat: 'christening' },
+
+  // Birthday
+  { id: 49, src: '/images/logo/599A2388.jpg', alt: 'Birthday', cat: 'birthday' },
+  { id: 50, src: '/images/logo/599A7528.jpg', alt: 'Birthday', cat: 'birthday' },
+  { id: 51, src: '/images/logo/599A5186.jpg', alt: 'Birthday', cat: 'birthday' },
+  { id: 52, src: '/images/logo/IMG_0106.jpg', alt: 'Birthday', cat: 'birthday' },
 ];
 
 const filters = [
   { key: 'all', label: 'All Work' },
-  { key: 'weddings', label: '💍 Wedding Stories' },
+  { key: 'weddings', label: '💍 Weddings' },
+  { key: 'studio', label: '📷 Studio' },
+  { key: 'graduation', label: '🎓 Graduation' },
   { key: 'events', label: '🎉 Events' },
-  { key: 'birthday', label: '🎂 Birthday' },
+  { key: 'products', label: '📦 Products' },
+  { key: 'portraits', label: '👤 Portraits' },
+  { key: 'maternity', label: '🤰 Maternity' },
+  { key: 'kids', label: '👶 Kids' },
   { key: 'couple', label: '💑 Couple' },
-  { key: 'baby-shower', label: '👶 Baby Shower' },
-  { key: 'portraits', label: '👨‍👩‍👧 Portraits' },
-  { key: 'corporate', label: '🏢 Corporate' },
-  { key: 'ethiopia', label: '🇪🇹 Ethiopia' },
+  { key: 'christening', label: '⛪️ Christening' },
+  { key: 'birthday', label: '🎂 Birthday' },
+];
+
+const categoryCards = [
+  { cat: 'weddings', src: '/images/logo/AR509567.jpg', label: '💍 Weddings' },
+  { cat: 'studio', src: '/images/logo/599A8883.jpg', label: '📷 Studio' },
+  { cat: 'graduation', src: '/images/logo/599A3265_1.jpg', label: '🎓 Graduation' },
+  { cat: 'events', src: '/images/logo/AR509846.jpg', label: '🎉 Events' },
+  { cat: 'products', src: '/images/logo/599A1705.jpg', label: '📦 Products' },
+  { cat: 'portraits', src: '/images/logo/AR506234.jpg', label: '👤 Portraits' },
+  { cat: 'maternity', src: '/images/logo/599A9425.jpg', label: '🤰 Maternity' },
+  { cat: 'kids', src: '/images/logo/599A4917.jpg', label: '👶 Kids' },
+  { cat: 'couple', src: '/images/logo/AR505878.jpg', label: '💑 Couple' },
+  { cat: 'christening', src: '/images/logo/AR500208.jpg', label: '⛪️ Christening' },
+  { cat: 'birthday', src: '/images/logo/599A2388.jpg', label: '🎂 Birthday' },
 ];
 
 export default function PortfolioClient() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [lightboxIdx, setLightboxIdx] = useState(null);
 
-  const visible = galleryItems.filter(
-    item => activeFilter === 'all' || item.cat === activeFilter
-  );
+  useScrollReveal();
 
-  const openLightbox = useCallback((idx) => {
-    setLightboxIdx(idx);
-    document.body.style.overflow = 'hidden';
-  }, []);
+  const visibleItems = activeFilter === 'all'
+    ? categoryCards
+    : categoryCards.filter(card => card.cat === activeFilter);
 
-  const closeLightbox = useCallback(() => {
+  const openAlbum = (cat) => setSelectedCategory(cat);
+  const closeAlbum = () => {
+    setSelectedCategory(null);
     setLightboxIdx(null);
-    document.body.style.overflow = '';
-  }, []);
+  };
 
-  const slides = visible.map(img => ({
-    src: img.src,
-    alt: img.alt
-  }));
+  const openLightbox = (idx) => setLightboxIdx(idx);
+
+  const categoryImages = galleryItems.filter(item => item.cat === selectedCategory);
+  const slides = categoryImages.map(img => ({ src: img.src, alt: img.alt }));
 
   return (
-    <div className="portfolio-section py-16 bg-zinc-950">
-      {/* Filters */}
-      <div className="flex flex-wrap justify-center gap-3 mb-12 px-6">
-        {filters.map((filter) => (
-          <button
-            key={filter.key}
-            onClick={() => setActiveFilter(filter.key)}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-              activeFilter === filter.key
-                ? 'bg-white text-black shadow-lg scale-105'
-                : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white'
-            }`}
-          >
-            {filter.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Gallery Grid - Album Style */}
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visible.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative overflow-hidden rounded-3xl bg-zinc-900 cursor-pointer shadow-2xl hover:shadow-3xl transition-all duration-500 aspect-[4/3]"
-              onClick={() => openLightbox(idx)}
-            >
-              <div className="absolute inset-0 border-8 border-zinc-800 rounded-3xl z-10 pointer-events-none" />
-
-              <div className="relative h-full w-full overflow-hidden">
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-20">
-                  <p className="text-white text-lg font-light tracking-wide">
-                    {item.alt}
-                  </p>
-                  <div className="text-xs uppercase tracking-[2px] text-amber-400 mt-1">
-                    {item.cat.replace('-', ' ')}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Lightbox */}
-      {lightboxIdx !== null && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
-          onClick={closeLightbox}
-        >
-          <div className="relative max-w-5xl w-full" onClick={e => e.stopPropagation()}>
-            <button
-              onClick={closeLightbox}
-              className="absolute -top-12 right-0 text-white text-5xl hover:text-amber-400 transition-colors"
-            >
-              ×
-            </button>
-
-            <img
-              src={slides[lightboxIdx].src}
-              alt={slides[lightboxIdx].alt}
-              className="max-h-[85vh] w-full object-contain rounded-2xl shadow-2xl"
-            />
-
-            <p className="text-center text-zinc-400 mt-6 text-lg">
-              {slides[lightboxIdx].alt}
-            </p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-      {/* ---------------- HERO ---------------- */}
+    <>
+      {/* HERO */}
       <section className="portfolio-hero-full">
-        <Image
-          src="https://images.unsplash.com/photo-1523438097201-512ae7d59c7a?w=1600&q=90"
-          alt="Portfolio hero"
-          fill
-          style={{ objectFit: 'cover' }}
-          priority
+        <Image 
+          src="https://images.unsplash.com/photo-1523438097201-512ae7d59c7a?w=1600&q=90" 
+          alt="Hero" 
+          fill 
+          style={{ objectFit: 'cover' }} 
+          priority 
         />
         <div className="hero-overlay" />
         <div className="hero-content">
@@ -168,10 +147,9 @@ export default function PortfolioClient() {
         </div>
       </section>
 
-      {/* ---------------- FILTER ---------------- */}
+      {/* Gallery Section */}
       <section className="gallery-section">
         <div className="container">
-
           <div className="filter-bar">
             {filters.map(f => (
               <button
@@ -184,48 +162,65 @@ export default function PortfolioClient() {
             ))}
           </div>
 
-          {/* ---------------- MASONRY ---------------- */}
           <div className="masonry-gallery">
-            {visible.map((item, idx) => (
+            {visibleItems.map((card) => (
               <div
-                key={item.src}
+                key={card.cat}
                 className="gallery-item"
-                onClick={() => openLightbox(idx)}
+                onClick={() => openAlbum(card.cat)}
               >
                 <Image
-                  src={item.src}
-                  alt={item.alt}
-                  width={1000}
-                  height={700}
-                  style={{
-                    objectFit: 'contain',   // ✅ FIX: no cropping
-                    width: '100%',
-                    height: '100%'
-                  }}
+                  src={card.src}
+                  alt={card.label}
+                  width={800}
+                  height={600}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                 />
                 <div className="overlay">
-                  <span>{item.alt}</span>
+                  <span>{card.label}</span>
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ---------------- LIGHTBOX (ZOOMED) ---------------- */}
+      {/* Category Album Modal */}
+      {selectedCategory && (
+        <div className="category-modal" onClick={closeAlbum}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <button className="close-modal" onClick={closeAlbum}>✕</button>
+            <div className="modal-header">
+              <h2>{filters.find(f => f.key === selectedCategory)?.label}</h2>
+            </div>
+            <div className="modal-gallery">
+              {categoryImages.map((item, idx) => (
+                <div 
+                  key={item.id} 
+                  className="modal-gallery-item"
+                  onClick={() => openLightbox(idx)}
+                >
+                  <Image 
+                    src={item.src} 
+                    alt={item.alt} 
+                    width={900} 
+                    height={600} 
+                    style={{ objectFit: 'cover' }} 
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox */}
       <Lightbox
         open={lightboxIdx !== null}
-        close={closeLightbox}
+        close={() => setLightboxIdx(null)}
         index={lightboxIdx ?? 0}
         slides={slides}
         plugins={[Zoom]}
-        zoom={{
-          maxZoomPixelRatio: 3,
-          scrollToZoom: true,
-          doubleTapDelay: 300
-        }}
-        animation={{ fade: 250 }}
       />
     </>
   );
