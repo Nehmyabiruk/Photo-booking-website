@@ -58,12 +58,12 @@ const onSubmit = async (data) => {
   setServerError(null);
 
   try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-
+    // In ContactClient.jsx, change the fetch URL:
+const res = await fetch('/api/contact', {   // 
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data),
+});
     const result = await res.json();
 
     if (res.ok) {
