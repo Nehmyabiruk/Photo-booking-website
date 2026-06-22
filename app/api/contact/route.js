@@ -14,21 +14,21 @@ export async function POST(request) {
       );
     }
 
-    // 1. Create transporter (same as review route)
+    // --- 1. Configure transporter (same as review route) ---
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: 'gmail', // or your email provider
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
     });
 
-    // 2. Admin email
-    await transporter.sendMail({
+    // --- 2. Send email to admin (amenpicture@outlook.com) ---
+    const adminEmail = {
       from: process.env.EMAIL_USER,
       to: process.env.ADMIN_EMAIL || 'amenpicture@outlook.com',
-      replyTo: data.email,
-      subject: `📸 New Contact - ${data.eventType} from ${data.firstName}`,
+      replyTo: data.email, // so admin can reply directly to the client
+      subject: `📸 New Contact Form - ${data.eventType} from ${data.firstName} ${data.lastName || ''}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${data.firstName} ${data.lastName || ''}</p>
@@ -42,10 +42,10 @@ export async function POST(request) {
         <p><strong>Message:</strong></p>
         <p>${data.message}</p>
       `,
-    });
+    };
 
-    // 3. Customer auto-reply
-    await transporter.sendMail({
+    // --- 3. Send auto-reply to the client ---
+    const customerEmail = {
       from: process.env.EMAIL_USER,
       to: data.email,
       subject: 'We received your inquiry – Amen Pictures',
@@ -57,20 +57,30 @@ export async function POST(request) {
         <p>Best regards,</p>
         <p><strong>Amen Pictures Team</strong></p>
       `,
-    });
+    };
 
-    // 4. (Optional) WhatsApp link
+    // --- 4. Send both emails ---
+    await Promise.all([
+      transporter.sendMail(adminEmail),
+      transporter.sendMail(customerEmail),
+    ]);
+
+    // --- 5. (Optional) Generate WhatsApp link for client-side redirect ---
     const whatsappLink = `https://wa.me/12408551199?text=Hi%2C%20I%20just%20submitted%20a%20contact%20form%20for%20${encodeURIComponent(data.eventType)}`;
+
+    console.log(`✅ Contact form from ${data.email} processed successfully`);
 
     return NextResponse.json({
       success: true,
-      whatsappLink,
-      message: 'Thank you! Your booking request has been received.',
+      whatsappLink, // client will open this in a new tab
+      message: 'Thank you! Your booking request has been received. We will contact you soon.',
     });
   } catch (error) {
     console.error('Contact API Error:', error);
     return NextResponse.json(
-      { error: 'Failed to send your message. Please try again.' },
+      {
+        error: 'Failed to send your message. Please try again or contact us directly.',
+      },
       { status: 500 }
     );
   }
