@@ -444,7 +444,7 @@
 /* ─────────────────────────────────────────
    8. AMHARIC COMMUNITY SECTION
 ───────────────────────────────────────── */
-.amharic-section {
+/* .amharic-section {
   position: relative;
   padding-block: clamp(var(--space-16), 8vw, var(--space-24));
   background:
@@ -453,7 +453,7 @@
   text-align: center;
   color: var(--color-white);
   overflow: hidden;
-}
+}*/ 
 
 .amharic-overlay {
   position: absolute;
