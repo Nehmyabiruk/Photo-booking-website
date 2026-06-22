@@ -13,69 +13,69 @@ import '@/styles/pages/portfolio.css';
 const galleryItems = [
   // Weddings
   { id: 1, src: '/images/logo/AR509567.jpg', alt: 'Wedding ceremony', cat: 'weddings' },
-  { id: 3, src: '/images/logo/AR509277.jpg', alt: 'Wedding ceremony', cat: 'weddings' },
+  { id: 2, src: '/images/logo/AR509277.jpg', alt: 'Wedding ceremony', cat: 'weddings' },
 
   // Studio Portraits
-  { id: 5, src: '/images/logo/JPEG image-49D5-970A-4F-171.jpeg', alt: 'Studio portrait', cat: 'studio' },
-  { id: 6, src: '/images/logo/JPEG image-49D5-970A-4F-172.jpeg', alt: 'Studio portrait', cat: 'studio' },
-  { id: 7, src: '/images/logo/JPEG image-49D5-970A-4F-173.jpeg', alt: 'Studio portrait', cat: 'studio' },
+  { id: 3, src: '/images/logo/JPEG image-49D5-970A-4F-171.jpeg', alt: 'Studio portrait', cat: 'studio' },
+  { id: 4, src: '/images/logo/JPEG image-49D5-970A-4F-172.jpeg', alt: 'Studio portrait', cat: 'studio' },
+  { id: 5, src: '/images/logo/JPEG image-49D5-970A-4F-173.jpeg', alt: 'Studio portrait', cat: 'studio' },
   //{ id: 8, src: '/images/logo/599A3463.jpg', alt: 'Studio portrait', cat: 'studio' },
 
   // Graduation
-  { id: 9, src: '/images/logo/JPEG image-49D5-970A-4F-56.jpeg', alt: 'Graduation', cat: 'graduation' },
-  { id: 10, src: '/images/logo/JPEG image-49D5-970A-4F-57.jpeg', alt: 'Graduation', cat: 'graduation' },
-  { id: 11, src: '/images/logo/JPEG image-49D5-970A-4F-59.jpeg', alt: 'Graduation', cat: 'graduation' },
+  { id: 6, src: '/images/logo/JPEG image-49D5-970A-4F-56.jpeg', alt: 'Graduation', cat: 'graduation' },
+  { id: 7, src: '/images/logo/JPEG image-49D5-970A-4F-57.jpeg', alt: 'Graduation', cat: 'graduation' },
+  { id: 8, src: '/images/logo/JPEG image-49D5-970A-4F-59.jpeg', alt: 'Graduation', cat: 'graduation' },
   //{ id: 12, src: '/images/logo/AR506679.jpg', alt: 'Graduation', cat: 'graduation' },
   //{ id: 13, src: '/images/logo/AR506318.jpg', alt: 'Graduation', cat: 'graduation' },
 
   // Events
-  { id: 17, src: '/images/logo/JPEG image-49D5-970A-4F-138.jpeg', alt: 'Special event', cat: 'events' },
-  { id: 18, src: '/images/logo/JPEG image-49D5-970A-4F-141.jpeg', alt: 'Special event', cat: 'events' },
+  { id: 9, src: '/images/logo/JPEG image-49D5-970A-4F-138.jpeg', alt: 'Special event', cat: 'events' },
+  { id: 10, src: '/images/logo/JPEG image-49D5-970A-4F-141.jpeg', alt: 'Special event', cat: 'events' },
 
   // Products
-  { id: 19, src: '/images/logo/JPEG image-49D5-970A-4F-129.jpeg', alt: 'Product', cat: 'products' },
-  { id: 20, src: '/images/logo/JPEG image-49D5-970A-4F-132.jpeg', alt: 'Product', cat: 'products' },
-  { id: 21, src: '/images/logo/JPEG image-49D5-970A-4F-133.jpeg', alt: 'Product', cat: 'products' },
+  { id: 11, src: '/images/logo/JPEG image-49D5-970A-4F-129.jpeg', alt: 'Product', cat: 'products' },
+  { id: 12, src: '/images/logo/JPEG image-49D5-970A-4F-132.jpeg', alt: 'Product', cat: 'products' },
+  { id: 13, src: '/images/logo/JPEG image-49D5-970A-4F-133.jpeg', alt: 'Product', cat: 'products' },
   //{ id: 22, src: '/images/logo/599A1603.jpg', alt: 'Product', cat: 'products' },
   //{ id: 23, src: '/images/logo/599A1620.jpg', alt: 'Product', cat: 'products' },
 
   // Portraits
-  { id: 25, src: '/images/logo/JPEG image-49D5-970A-4F-125.jpeg', alt: 'Portrait', cat: 'portraits' },
-  { id: 26, src: '/images/logo/JPEG image-49D5-970A-4F-119.jpeg', alt: 'Portrait', cat: 'portraits' },
-  { id: 27, src: '/images/logo/JPEG image-49D5-970A-4F-123.jpeg', alt: 'Portrait', cat: 'portraits' },
+  { id: 14, src: '/images/logo/JPEG image-49D5-970A-4F-125.jpeg', alt: 'Portrait', cat: 'portraits' },
+  { id: 15, src: '/images/logo/JPEG image-49D5-970A-4F-119.jpeg', alt: 'Portrait', cat: 'portraits' },
+  { id: 16, src: '/images/logo/JPEG image-49D5-970A-4F-123.jpeg', alt: 'Portrait', cat: 'portraits' },
   //{ id: 28, src: '/images/logo/IMG_2819.JPG', alt: 'Portrait', cat: 'portraits' },
 
   // Maternity
-  { id: 29, src: '/images/logo/JPEG image-49D5-970A-4F-92.jpeg', alt: 'Maternity', cat: 'maternity' },
-  { id: 30, src: '/images/logo/public/JPEG image-49D5-970A-4F-99.jpeg', alt: 'Maternity', cat: 'maternity' },
-  { id: 31, src: '/images/logo/public/JPEG image-49D5-970A-4F-102.jpeg', alt: 'Maternity', cat: 'maternity' },
+  { id: 17, src: '/images/logo/JPEG image-49D5-970A-4F-92.jpeg', alt: 'Maternity', cat: 'maternity' },
+  { id: 18, src: '/images/logo/JPEG image-49D5-970A-4F-99.jpeg', alt: 'Maternity', cat: 'maternity' },
+  { id: 19, src: '/images/logo/JPEG image-49D5-970A-4F-102.jpeg', alt: 'Maternity', cat: 'maternity' },
  // { id: 32, src: '/images/logo/599A9099.jpg', alt: 'Maternity', cat: 'maternity' },
 
   // Kids
-  { id: 33, src: '/images/logo/599A4917.jpg', alt: 'Kids', cat: 'kids' },
-  { id: 34, src: '/images/logo/AR507862.jpg', alt: 'Kids', cat: 'kids' },
-  { id: 35, src: '/images/logo/AR509639 (1).jpg', alt: 'Kids', cat: 'kids' },
-  { id: 36, src: '/images/logo/AR507520.jpg', alt: 'Kids', cat: 'kids' },
+  { id: 20, src: '/images/logo/JPEG image-49D5-970A-4F-65.jpeg', alt: 'Kids', cat: 'kids' },
+  { id: 21, src: '/images/logo/JPEG image-49D5-970A-4F-71.jpeg', alt: 'Kids', cat: 'kids' },
+  { id: 22, src: '/images/logo/JPEG image-49D5-970A-4F-74.jpeg', alt: 'Kids', cat: 'kids' },
+  //{ id: 36, src: '/images/logo/AR507520.jpg', alt: 'Kids', cat: 'kids' },
 
   // Couple
-  { id: 39, src: '/images/logo/AR505878.jpg', alt: 'Couple', cat: 'couple' },
-  { id: 40, src: '/images/logo/AR505738-Enhanced-NR.jpg', alt: 'Couple', cat: 'couple' },
-  { id: 41, src: '/images/logo/599A8968.jpg', alt: 'Couple', cat: 'couple' },
-  { id: 42, src: '/images/logo/599A8332.jpg', alt: 'Couple', cat: 'couple' },
-  { id: 43, src: '/images/logo/599A6362.jpg', alt: 'Couple', cat: 'couple' },
+  { id: 23, src: '/images/logo/JPEG image-49D5-970A-4F-37.jpeg', alt: 'Couple', cat: 'couple' },
+  { id: 24, src: '/images/logo/JPEG image-49D5-970A-4F-41.jpeg', alt: 'Couple', cat: 'couple' },
+  { id: 25, src: '/images/logo/JPEG image-49D5-970A-4F-44.jpeg', alt: 'Couple', cat: 'couple' },
+  //{ id: 42, src: '/images/logo/599A8332.jpg', alt: 'Couple', cat: 'couple' },
+  //{ id: 43, src: '/images/logo/599A6362.jpg', alt: 'Couple', cat: 'couple' },
 
   // Christening
-  { id: 44, src: '/images/logo/AR500208.jpg', alt: 'Christening', cat: 'christening' },
-  { id: 45, src: '/images/logo/AR500267.jpg', alt: 'Christening', cat: 'christening' },
-  { id: 46, src: '/images/logo/AR508422.jpg', alt: 'Christening', cat: 'christening' },
-  { id: 47, src: '/images/logo/AR508606.jpg', alt: 'Christening', cat: 'christening' },
-  { id: 48, src: '/images/logo/AR508639.jpg', alt: 'Christening', cat: 'christening' },
+  { id: 26, src: '/images/logo/JPEG image-49D5-970A-4F-33.jpeg', alt: 'Christening', cat: 'christening' },
+  { id: 27, src: '/images/logo/JPEG image-49D5-970A-4F-31.jpeg', alt: 'Christening', cat: 'christening' },
+  { id: 28, src: '/images/logo/JPEG image-49D5-970A-4F-24.jpeg', alt: 'Christening', cat: 'christening' },
+ // { id: 47, src: '/images/logo/AR508606.jpg', alt: 'Christening', cat: 'christening' },
+  //{ id: 48, src: '/images/logo/AR508639.jpg', alt: 'Christening', cat: 'christening' },
 
   // Birthday
-  { id: 49, src: '/images/logo/599A2388.jpg', alt: 'Birthday', cat: 'birthday' },
-  { id: 50, src: '/images/logo/599A7528.jpg', alt: 'Birthday', cat: 'birthday' },
-  { id: 51, src: '/images/logo/599A5186.jpg', alt: 'Birthday', cat: 'birthday' },
-  { id: 52, src: '/images/logo/IMG_0106.jpg', alt: 'Birthday', cat: 'birthday' },
+  { id: 29, src: '/images/logo/JPEG image-49D5-970A-4F-18.jpeg', alt: 'Birthday', cat: 'birthday' },
+  { id: 30, src: '/images/logo/JPEG image-49D5-970A-4F-17.jpeg', alt: 'Birthday', cat: 'birthday' },
+  { id: 31, src: '/images/logo/JPEG image-49D5-970A-4F-14.jpeg', alt: 'Birthday', cat: 'birthday' },
+ // { id: 52, src: '/images/logo/IMG_0106.jpg', alt: 'Birthday', cat: 'birthday' },
 ];
 
 const filters = [
