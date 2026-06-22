@@ -33,23 +33,23 @@ const galleryItems = [
   { id: 18, src: '/images/logo/JPEG image-49D5-970A-4F-141.jpeg', alt: 'Special event', cat: 'events' },
 
   // Products
-  { id: 19, src: '/images/logo/599A1705.jpg', alt: 'Product', cat: 'products' },
-  { id: 20, src: '/images/logo/599A1684.jpg', alt: 'Product', cat: 'products' },
-  { id: 21, src: '/images/logo/599A1672.jpg', alt: 'Product', cat: 'products' },
-  { id: 22, src: '/images/logo/599A1603.jpg', alt: 'Product', cat: 'products' },
-  { id: 23, src: '/images/logo/599A1620.jpg', alt: 'Product', cat: 'products' },
+  { id: 19, src: '/images/logo/JPEG image-49D5-970A-4F-129.jpeg', alt: 'Product', cat: 'products' },
+  { id: 20, src: '/images/logo/JPEG image-49D5-970A-4F-132.jpeg', alt: 'Product', cat: 'products' },
+  { id: 21, src: '/images/logo/JPEG image-49D5-970A-4F-133.jpeg', alt: 'Product', cat: 'products' },
+  //{ id: 22, src: '/images/logo/599A1603.jpg', alt: 'Product', cat: 'products' },
+  //{ id: 23, src: '/images/logo/599A1620.jpg', alt: 'Product', cat: 'products' },
 
   // Portraits
-  { id: 25, src: '/images/logo/AR506234.jpg', alt: 'Portrait', cat: 'portraits' },
-  { id: 26, src: '/images/logo/AR506359.jpg', alt: 'Portrait', cat: 'portraits' },
-  { id: 27, src: '/images/logo/AR508966.jpg', alt: 'Portrait', cat: 'portraits' },
-  { id: 28, src: '/images/logo/IMG_2819.JPG', alt: 'Portrait', cat: 'portraits' },
+  { id: 25, src: '/images/logo/JPEG image-49D5-970A-4F-125.jpeg', alt: 'Portrait', cat: 'portraits' },
+  { id: 26, src: '/images/logo/JPEG image-49D5-970A-4F-119.jpeg', alt: 'Portrait', cat: 'portraits' },
+  { id: 27, src: '/images/logo/JPEG image-49D5-970A-4F-123.jpeg', alt: 'Portrait', cat: 'portraits' },
+  //{ id: 28, src: '/images/logo/IMG_2819.JPG', alt: 'Portrait', cat: 'portraits' },
 
   // Maternity
-  { id: 29, src: '/images/logo/599A9425.jpg', alt: 'Maternity', cat: 'maternity' },
-  { id: 30, src: '/images/logo/599A9275.jpg', alt: 'Maternity', cat: 'maternity' },
-  { id: 31, src: '/images/logo/599A9103.jpg', alt: 'Maternity', cat: 'maternity' },
-  { id: 32, src: '/images/logo/599A9099.jpg', alt: 'Maternity', cat: 'maternity' },
+  { id: 29, src: '/images/logo/JPEG image-49D5-970A-4F-92.jpeg', alt: 'Maternity', cat: 'maternity' },
+  { id: 30, src: '/images/logo/public/JPEG image-49D5-970A-4F-99.jpeg', alt: 'Maternity', cat: 'maternity' },
+  { id: 31, src: '/images/logo/public/JPEG image-49D5-970A-4F-102.jpeg', alt: 'Maternity', cat: 'maternity' },
+ // { id: 32, src: '/images/logo/599A9099.jpg', alt: 'Maternity', cat: 'maternity' },
 
   // Kids
   { id: 33, src: '/images/logo/599A4917.jpg', alt: 'Kids', cat: 'kids' },
