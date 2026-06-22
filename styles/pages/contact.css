@@ -9,7 +9,7 @@
    1. PAGE HERO
 ───────────────────────────────────────── */
 .contact-hero {
-  background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600url('/images/hero/hero-bg.jpg')q=80');
+  background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80');
   min-height: 380px;
 }
 
