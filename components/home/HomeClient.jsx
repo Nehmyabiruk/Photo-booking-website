@@ -74,6 +74,15 @@ const instagramItems = [
   { src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80',   alt: 'Amen Pictures Instagram post — wedding photography' },
 ];
 
+const featuredGalleryItems = [
+  { id: 1, src: '/images/logo/studio33.jpeg', alt: 'Wedding', cat: 'weddings' },
+  { id: 2, src: '/images/logo/studio4.jpeg', alt: 'Studio', cat: 'studio' },
+  { id: 3, src: '/images/logo/studio21.jpeg', alt: 'Graduation', cat: 'graduation' },
+  { id: 4, src: '/images/logo/studio6.jpeg', alt: 'Event', cat: 'events' },
+  { id: 5, src: '/images/logo/studio10.jpeg', alt: 'Portrait', cat: 'portraits' },
+  { id: 6, src: '/images/logo/studio24.jpeg', alt: 'Couple', cat: 'couple' },
+];
+
 export default function HomeClient() {
   const { t, lang } = useLang();
   useScrollReveal();
@@ -228,12 +237,25 @@ export default function HomeClient() {
             <h2 className="section-title">Our Work Speaks for Itself</h2>
           </div>
           <div className="portfolio-masonry">
-            {portfolioItems.map((p, i) => (
-              <div className="portfolio-item reveal-up" key={i} style={{ animationDelay: `${0.1 + i * 0.05}s` }} data-category={p.cat}>
-                <Image src={p.src} alt={p.alt} fill style={{ objectFit: 'cover' }} loading="lazy" />
-                <div className="portfolio-overlay"><span>{p.cat}</span></div>
-              </div>
-            ))}
+          {featuredGalleryItems.map((item, i) => (
+  <div
+    className="portfolio-item reveal-up"
+    key={item.id}
+    style={{ animationDelay: `${0.1 + i * 0.05}s` }}
+    data-category={item.cat}
+  >
+    <Image
+      src={item.src}
+      alt={item.alt}
+      fill
+      style={{ objectFit: 'cover' }}
+      loading="lazy"
+    />
+    <div className="portfolio-overlay">
+      <span>{item.cat}</span>
+    </div>
+  </div>
+))}
           </div>
           <div className="section-cta reveal-up">
             <Link href="/portfolio" className="btn btn-gold">View Full Portfolio</Link>
@@ -320,12 +342,28 @@ export default function HomeClient() {
             <p className="section-sub">@amen_pictures_ on Instagram</p>
           </div>
           <div className="instagram-grid">
-            {instagramItems.map((item, i) => (
-              <a key={i} href="https://www.instagram.com/amen_pictures_/" target="_blank" rel="noopener noreferrer" className="instagram-item reveal-up" style={{ animationDelay: `${0.1 + i * 0.05}s` }} aria-label="View photo on Instagram">
-                <Image src={item.src} alt={item.alt} fill style={{ objectFit: 'cover' }} loading="lazy" />
-                <div className="instagram-overlay"><i className="fab fa-instagram" aria-hidden="true" /></div>
-              </a>
-            ))}
+          {featuredGalleryItems.map((item, i) => (
+  <a
+    key={item.id}
+    href="https://www.instagram.com/amen_pictures_/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="instagram-item reveal-up"
+    style={{ animationDelay: `${0.1 + i * 0.05}s` }}
+    aria-label="View photo on Instagram"
+  >
+    <Image
+      src={item.src}
+      alt={item.alt}
+      fill
+      style={{ objectFit: 'cover' }}
+      loading="lazy"
+    />
+    <div className="instagram-overlay">
+      <i className="fab fa-instagram" aria-hidden="true" />
+    </div>
+  </a>
+))}
           </div>
           <div className="section-cta reveal-up">
             <a href="https://www.instagram.com/amen_pictures_/" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
